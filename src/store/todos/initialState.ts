@@ -12,16 +12,16 @@ export const state: any = [
   {
     id: 3,
     title: "Migrate actions from Vue to Vuex actions",
-    completed: false
+    completed: true
   },
   {
     id: 4,
-    title: "Use javascript",
-    completed: false
+    title: "Use form and form validation for adding task",
+    completed: true
   },
   {
     id: 5,
-    title: "Use form and form validation for adding task",
+    title: "Enter a new task and hit enter",
     completed: false
   }
 ];

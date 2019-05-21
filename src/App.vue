@@ -1,34 +1,50 @@
 <template>
-  <div id="app">
-    <Todo v-bind:todos="todos"/>
-  </div>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Todo App</span>
+        <span class="font-weight-light">with Vue.js</span>
+      </v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <div class="appContainer">
+        <TodoList />
+        <pie-chart
+          :data="[
+            ['Completed', allCompleted.length],
+            ['Pending', allPending.length]
+          ]"
+        ></pie-chart>
+      </div>
+    </v-content>
+  </v-app>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Todo from "./components/Todo.vue";
-import TodoItem from "./components/TodoItem.vue";
+<script>
+import TodoList from "./components/TodoList";
+import { createNamespacedHelpers } from "vuex";
+const { mapGetters } = createNamespacedHelpers("todos");
 
-@Component({
-  computed: {
-    todos() {
-      return this.$store.state.todos;
-    }
-  },
+export default {
+  name: "App",
   components: {
-    Todo
+    TodoList
+  },
+  computed: {
+    ...mapGetters(["allCompleted", "allPending"])
   }
-})
-export default class App extends Vue {}
+};
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+* {
+  font-family: "Dosis";
+}
+.appContainer {
   width: 75%;
-  margin: 60px auto;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 </style>

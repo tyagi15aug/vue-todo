@@ -1,9 +1,12 @@
+import shortid from "shortid";
+
 export const actions: any = {
-  addTodoItem ({ commit }, title:string) {
-    commit('addTodoItem', {
+  addTodoItem({ commit }, title: string) {
+    commit("addTodoItem", {
+      id: shortid.generate(),
       title,
       completed: false
-    })
+    });
   },
   editTodoItem({ commit }, { todo, value }) {
     commit("editTodo", { todo, title: value });
