@@ -1,4 +1,9 @@
 # vue-todo
+Simple todo application using
+- Vue.js
+- Vuex
+- Vuetify
+- vue-chartkick & chart.js
 
 ## Project setup
 ```
